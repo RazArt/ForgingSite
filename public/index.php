@@ -16,7 +16,7 @@
     }
     
     define('DEBUG_MODE', true);
-    
+    //Test
     if (DEBUG_MODE) {
         error_reporting(E_ALL);
     } else {
