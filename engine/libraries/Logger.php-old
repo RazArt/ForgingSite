@@ -1,0 +1,58 @@
+<?php
+	class Logger
+	{
+		const T_INFO = 0;
+		const T_LOGGER_ERROR = 1;
+		
+		private $folder_path;
+		private $log_file = [];
+		
+		public static function init() 
+		{
+			self::$folder_path = LOGS_PATH . date('d.m.Y') . D_S;
+			
+			if (!is_dir(self::$folder_path))
+			{
+				mkdir(self::$folder_path);
+			}
+		}
+		
+		public static function write($type, $message) 
+		{
+			if (!$file_handle = self::get_log_file[$type])
+			{
+				return false;
+			}
+			
+			fwrite($file_handle, date('H:i:s') . '    ' . $message);
+		}
+		
+		private static function get_log_file($name) 
+		{
+			if (!isset(self::$log_file[$name]))
+			{
+				if ($name == 'main')
+				{
+					$file_path = LOGS_PATH . 'main.log'
+					
+					if (!self::$log_file[$name] = fopen($file_path, 'a'))
+					{
+						die ('main.log file not loaded');
+					}
+				}
+				else
+				{
+					$file_path = self::$folder_path . $name . '.log'
+					
+					if (!self::$log_file[$name] = fopen($file_path, 'a'))
+					{
+						self::write(self::T_LOGGER_ERROR, 'Не могу открыть лог-файл "' . $file_path . '"')
+						
+						return false;
+					}
+				}
+			}
+			
+			return self::$log_file[$name];
+		}
+	}

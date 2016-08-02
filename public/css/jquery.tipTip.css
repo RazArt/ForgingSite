@@ -1,0 +1,61 @@
+#tiptip_holder {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99999;
+}
+
+#tiptip_holder.tip_top {
+	padding-bottom: 5px;
+}
+
+#tiptip_holder.tip_bottom {
+	padding-top: 5px;
+}
+
+#tiptip_holder.tip_right {
+	padding-left: 5px;
+}
+
+#tiptip_holder.tip_left {
+	padding-right: 5px;
+}
+
+#tiptip_content {
+	color: #fff;
+	text-shadow: 0 1px 1px rgba(255,255,255,0.3);
+	font: bold 11px Sans-Serif;
+	padding: 4px 8px;
+	
+	border: 0px solid #ffd796;
+	-webkit-border-radius: 3px;
+	-mox-border-radius: 3px;
+	border-radius: 3px;
+	
+	background: #000;
+
+	position: relative;
+	z-index: 1000;
+	padding: 6px 10px;
+}
+
+#tiptip_arrow{
+	transform:rotate(45deg);
+	-webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	-o-transform:rotate(45deg);
+	position: absolute;
+	
+	height: 6px;
+	width: 6px;
+	
+	background: #000;
+	z-index: 5;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {	
+	#tiptip_content {
+		padding: 4px 8px 5px 8px;
+	}
+}
